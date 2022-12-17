@@ -22,6 +22,28 @@ paths:
           description: ''
       tags:
         - リザルト
+  /v2/results:
+    post:
+      operationId: 登録
+      summary: ''
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomResultRequest'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadStatuses'
+        '400':
+          description: ''
+      tags:
+        - リザルト
 info:
   title: Salmon Stats NEXT WAVE API Documents
   description: ''
@@ -77,5 +99,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UploadStatus'
+      required:
+        - results
+    CustomResultRequest:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: string
       required:
         - results
